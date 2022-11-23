@@ -1,0 +1,32 @@
+{
+  "name": "kasa2",
+  "version": "1.0.0",
+  "description": "Airbnb with Python, Django, Tailwind and more... 🇰🇷💖🐍",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wottan32/KASA2.git"
+  },
+  "scripts": {
+    "css": "gulp"
+  },
+  "homepage": "https://github.com/wottan32/KASA2#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^7.0.3",
+    "tailwindcss": "^3.1.8"
+  },
+  "bugs": {
+    "url": "https://github.com/wottan32/KASA2/issues"
+  },
+  "main": "gulpfile.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clean-css-cli": "^5.6.1"
+  }
+}

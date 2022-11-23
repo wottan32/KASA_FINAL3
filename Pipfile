@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+flake8 = "*"
+pylint = "*"
+pillow = "*"
+django-countries = "*"
+aconfig = "*"
+psycopg2 = "*"
+django-seed = "*"
+subject = "*"
+requests = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
