@@ -4,6 +4,7 @@ from . import views
 app_name = "users"
 
 urlpatterns = [
+    # path("login/", view=views.LoginView.as_view(), name="login"),
     path("login/", views.LoginView.as_view(), name="login"),
     path("login/github/", views.github_login, name="github-login"),
     path("login/github/callback/", views.github_callback, name="github-callback"),

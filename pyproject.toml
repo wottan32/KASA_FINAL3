@@ -19,6 +19,7 @@ django-tailwind = "^3.4.0"
 pytailwindcss = "^0.1.4"
 django-embed-video = "^1.4.8"
 pillow = "^9.3.0"
+django-allauth = "^0.51.0"
 
 
 [build-system]

@@ -13,6 +13,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
+    <orderEntry type="jdk" jdkName="Poetry (KASA_FINAL)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

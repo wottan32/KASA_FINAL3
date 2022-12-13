@@ -3,28 +3,44 @@ import requests
 from django.utils import translation
 from django.http import HttpResponse
 from django.contrib.auth.views import PasswordChangeView
-from django.views.generic import FormView, DetailView, UpdateView
+from django.views.generic import FormView, DetailView, UpdateView, View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-# from django.core.files.base import ContentFile
+from django.core.files.base import ContentFile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from . import forms, models, mixins
+# from allauth.account.models import SocialAccount
 
 
 class LoginView(mixins.LoggedOutOnlyView, FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
+    # def post(self, request):
+    #     user = authenticate(request, provide="github")
+    #     if user is not None:
+    #         login(request, user)
+    #         return redirect(reverse("core:home"))
+    #     else:
+    #         return redirect(reverse("users:login"))
+
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+        user = authenticate(self.request, username=email, password=password, provide="github")
+        # user = authenticate(self.request, provide="github")
+        # if user is not None:
+        #     login(request, user)
+        #     return redirect(reverse("core:home"))
+        # else:
+        #     return redirect(reverse("users:login"))
         if user is not None:
             login(self.request, user)
-        return super().form_valid(form)
+        # return super().form_valid(form)
+
 
     def get_success_url(self):
         next_arg = self.request.GET.get("next")
@@ -71,10 +87,21 @@ def complete_verification(request, key):
 
 def github_login(request):
     client_id = os.environ.get("GH_ID")
-    redirect_uri = "http://airbnb-live-dev.ap-northeast-2.elasticbeanstalk.com/users/login/github/callback"
+    redirect_uri = "http://   .ngrok.io/users/login/github/callback"
     return redirect(
-        f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
+        f"  /login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
     )
+
+class LoginView(View):
+    def post(self, request):
+        user = authenticate(request, provide="github")
+        if user is not None:
+            login(request, user)
+            return redirect(reverse("core:home"))
+        else:
+            return redirect(reverse("users:login"))
+
+
 
 
 class GithubException(Exception):
