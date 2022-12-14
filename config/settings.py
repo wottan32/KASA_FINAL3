@@ -1,6 +1,6 @@
 import os
 import sentry_sdk
-from django.conf import settings
+# from django.conf import settings
 from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure---k!%jyv_4g+q!5cl-ij-8+!a()d5h@vwd@5t7ux_z@*#98qso'
+SECRET_KEY = '_8o_w#6@te08l)aewj@bk)3(m#oz63clh@fw#5!4s1%37re4b2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,25 +33,24 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "django_countries",
-    "django_seed",
-    "translation_manager",
-    "storages",
-    "tailwind",
-    "theme",
-    "tailwindcss",
-    "django_browser_reload",
+    'django_countries',
+    'django_seed',
+    'translation_manager',
+    'storages',
+    'tailwind',
+    'theme',
+    'tailwindcss',
+    'django_browser_reload',
 ]
 
 PROJECT_APPS = [
+    'core.apps.CoreConfig',
     'users.apps.UsersConfig',
     'rooms.apps.RoomsConfig',
     'reviews.apps.ReviewsConfig',
-    'lists.apps.ListsConfig',
     'reservations.apps.ReservationsConfig',
+    'lists.apps.ListsConfig',
     'conversations.apps.ConversationsConfig',
-    'core.apps.CoreConfig',
-
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -59,14 +58,12 @@ INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # new
-    "django.contrib.sessions.middleware.SessionMiddleware",  # new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -186,19 +183,19 @@ AWS_DEFAULT_ACL = None
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # AUTH_USER_MODEL = "users.User"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Media
 # DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
 
-MEDIA_URL = "/media/"
+MEDIA_URL = '/media/'
 
 # Auth
 
@@ -206,14 +203,15 @@ MEDIA_URL = "/media/"
 
 # Email
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = "587"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'mtorresl@uft.edu'
 EMAIL_HOST_PASSWORD = 'Mario1579'
-EMAIL_FROM = "mtorresl@uft.edu"
+EMAIL_FROM = 'mtorresl@uft.edu'
+EMAIL_USE_TLS = True  # new FUCKING headache!!!!!!!!!!!!!
 
 # Locale
-LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 """
 # Languages
@@ -226,25 +224,26 @@ LANGUAGES = (
 # Sentry
 
 sentry_sdk.init(
-    dsn=os.environ.get("SENTRY_URL"),
+    dsn=os.environ.get('SENTRY_URL'),
     integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
     send_default_pii=True,
-    ignore_errors=["django.security.DisallowedHost"],
+    # ignore_errors=['django.security.DisallowedHost'],
 )
 
-sentry_sdk.integrations.logging.ignore_logger("django.security.DisallowedHost")
+sentry_sdk.integrations.logging.ignore_logger('django.security.DisallowedHost')
 
 # tailwind APP THEME
 TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
-    "127.0.0.1",
+    '127.0.0.1',
 ]
 
 # BASE_DIR = Path(__file__).resolve().parent
 
-TAILWINDCSS_CLI_FILE = "tailwindcss-linux-x64"
-TAILWINDCSS_CONFIG_FILE = os.path.join("tailwind.config.js")
+TAILWINDCSS_CLI_FILE = 'tailwindcss-linux-x64'
+TAILWINDCSS_CONFIG_FILE = os.path.join('tailwind.config.js')
 
 # TAILWINDCSS_CONFIG_FILE = BASE_DIR / "tailwind.config.js'
 

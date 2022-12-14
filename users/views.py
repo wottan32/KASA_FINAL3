@@ -8,11 +8,13 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-# from django.core.files.base import ContentFile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from . import forms, models, mixins
 
+
+# client_id = "df6a5412a07f33314d1d"
+# client_secret = "71f5061914322563883b41e8b7da602c556f6043"
 
 # from allauth.account.models import SocialAccount
 
@@ -21,28 +23,14 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
 
-    # def post(self, request):
-    #     user = authenticate(request, provide="github")
-    #     if user is not None:
-    #         login(request, user)
-    #         return redirect(reverse("core:home"))
-    #     else:
-    #         return redirect(reverse("users:login"))
-
     def form_valid(self, form):
+        # post
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
         user = authenticate(self.request, username=email, password=password)
-        #  user = authenticate(self.request, provide="github")
         if user is not None:
             login(self.request, user)
-            #  return redirect(reverse("core:home"))
-        else:
-            # return redirect(reverse("users:login"))
-            return super().form_valid(form)
-        # if user is not None:
-        #     login(self.request, user)
-        # return super().form_valid(form)
+        return super().form_valid(form)
 
     def get_success_url(self):
         next_arg = self.request.GET.get("next")
@@ -89,21 +77,11 @@ def complete_verification(request, key):
 
 
 def github_login(request):
-    client_id = 'df6a5412a07f33314d1d'
+    client_id = "df6a5412a07f33314d1d"
     redirect_uri = "http://127.0.0.1:8000/users/login/github/callback"
     return redirect(
-        f"http://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
+        f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
     )
-
-
-# class LoginView(View):
-#     def post(self, request):
-#         user = authenticate(request, provide="github")
-#         if user is not None:
-#             login(request, user)
-#             return redirect(reverse("core:home"))
-#         else:
-#             return redirect(reverse("users:login"))
 
 
 class GithubException(Exception):
@@ -112,22 +90,25 @@ class GithubException(Exception):
 
 def github_callback(request):
     try:
-        client_id = 'df6a5412a07f33314d1d'
-        client_secret = '71f5061914322563883b41e8b7da602c556f6043'
+        client_id = "df6a5412a07f33314d1d"
+        client_secret = "71f5061914322563883b41e8b7da602c556f6043"
         code = request.GET.get("code", None)
+
         if code is not None:
             token_request = requests.post(
-                f"http://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
+                f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
                 headers={"Accept": "application/json"},
             )
             token_json = token_request.json()
+            # class 'dict'
             error = token_json.get("error", None)
             if error is not None:
                 raise GithubException("Can't get access token")
             else:
                 access_token = token_json.get("access_token")
+                # access_toke github api access
                 profile_request = requests.get(
-                    "http://api.github.com/user",
+                    "https://api.github.com/user",
                     headers={
                         "Authorization": f"token {access_token}",
                         "Accept": "application/json",
@@ -163,6 +144,7 @@ def github_callback(request):
                     raise GithubException("Can't get your profile")
         else:
             raise GithubException("Can't get code")
+
     except GithubException as e:
         messages.error(request, e)
         return redirect(reverse("users:login"))
@@ -300,4 +282,4 @@ def switch_language(request):
     lang = request.GET.get("lang", None)
     if lang is not None:
         request.session[translation.LANGUAGE_SESSION_KEY] = lang  # LANGUAGE_SESSION_KEY
-    return redirect(reverse("core:home", HttpResponse(status=200)))
+    return HttpResponse(status=200)
