@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure---k!%jyv_4g+q!5cl-ij-8+!a()d5h@vwd@5t7ux_z@*#98qso
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -26,10 +26,10 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.github',
 ]
 
 THIRD_PARTY_APPS = [
@@ -95,24 +95,31 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "HOST": os.environ.get("RDS_HOST"),
-            "NAME": os.environ.get("RDS_NAME"),
-            "PASSWORD": os.environ.get("RDS_PASSWORD"),
-            "USER": os.environ.get("RDS_USER"),
-            "PORT": "5432",
-        }
-    }
+}
+
+# if DEBUG:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql",
+#             "HOST": os.environ.get("RDS_HOST"),
+#             "NAME": os.environ.get("RDS_NAME"),
+#             "PASSWORD": os.environ.get("RDS_PASSWORD"),
+#             "USER": os.environ.get("RDS_USER"),
+#             "PORT": "5432",
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -185,27 +192,25 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-AUTH_USER_MODEL = "users.User"
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-# Media
-# DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
+# AUTH_USER_MODEL = "users.User"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# Media
+# DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
 
 MEDIA_URL = "/media/"
 
 # Auth
 
-LOGIN_URL = "/users/login/"
+# LOGIN_URL = "/users/login/"
 
 # Email
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = "587"
-EMAIL_HOST_USER = os.environ.get("GMAIL_USERNAME")
-EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_PASSWORD")
-EMAIL_FROM = "mariotorreslagos@gmail.com"
+EMAIL_HOST_USER = 'mtorresl@uft.edu'
+EMAIL_HOST_PASSWORD = 'Mario1579'
+EMAIL_FROM = "mtorresl@uft.edu"
 
 # Locale
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)

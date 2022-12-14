@@ -1,23 +1,26 @@
-import os
+# import os
 import requests
 from django.utils import translation
 from django.http import HttpResponse
 from django.contrib.auth.views import PasswordChangeView
-from django.views.generic import FormView, DetailView, UpdateView, View
+from django.views.generic import FormView, DetailView, UpdateView  # View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.files.base import ContentFile
+# from django.core.files.base import ContentFile
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from . import forms, models, mixins
+
+
 # from allauth.account.models import SocialAccount
 
 
 class LoginView(mixins.LoggedOutOnlyView, FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
+
     # def post(self, request):
     #     user = authenticate(request, provide="github")
     #     if user is not None:
@@ -26,21 +29,20 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
     #     else:
     #         return redirect(reverse("users:login"))
 
-
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password, provide="github")
-        # user = authenticate(self.request, provide="github")
-        # if user is not None:
-        #     login(request, user)
-        #     return redirect(reverse("core:home"))
-        # else:
-        #     return redirect(reverse("users:login"))
+        user = authenticate(self.request, username=email, password=password)
+        #  user = authenticate(self.request, provide="github")
         if user is not None:
             login(self.request, user)
+            #  return redirect(reverse("core:home"))
+        else:
+            # return redirect(reverse("users:login"))
+            return super().form_valid(form)
+        # if user is not None:
+        #     login(self.request, user)
         # return super().form_valid(form)
-
 
     def get_success_url(self):
         next_arg = self.request.GET.get("next")
@@ -77,31 +79,31 @@ def complete_verification(request, key):
         user = models.User.objects.get(email_secret=key)
         user.email_verified = True
         user.email_secret = ""
+        user.is_active = True
         user.save()
-        # to do: add succes message
+        # print("email verificado")
     except models.User.DoesNotExist:
-        # to do: add error message
+        # print("usuario no existe")
         pass
     return redirect(reverse("core:home"))
 
 
 def github_login(request):
-    client_id = os.environ.get("GH_ID")
-    redirect_uri = "http://   .ngrok.io/users/login/github/callback"
+    client_id = 'df6a5412a07f33314d1d'
+    redirect_uri = "http://127.0.0.1:8000/users/login/github/callback"
     return redirect(
-        f"  /login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
+        f"http://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user"
     )
 
-class LoginView(View):
-    def post(self, request):
-        user = authenticate(request, provide="github")
-        if user is not None:
-            login(request, user)
-            return redirect(reverse("core:home"))
-        else:
-            return redirect(reverse("users:login"))
 
-
+# class LoginView(View):
+#     def post(self, request):
+#         user = authenticate(request, provide="github")
+#         if user is not None:
+#             login(request, user)
+#             return redirect(reverse("core:home"))
+#         else:
+#             return redirect(reverse("users:login"))
 
 
 class GithubException(Exception):
@@ -110,12 +112,12 @@ class GithubException(Exception):
 
 def github_callback(request):
     try:
-        client_id = os.environ.get("GH_ID")
-        client_secret = os.environ.get("GH_SECRET")
+        client_id = 'df6a5412a07f33314d1d'
+        client_secret = '71f5061914322563883b41e8b7da602c556f6043'
         code = request.GET.get("code", None)
         if code is not None:
             token_request = requests.post(
-                f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
+                f"http://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
                 headers={"Accept": "application/json"},
             )
             token_json = token_request.json()
@@ -125,7 +127,7 @@ def github_callback(request):
             else:
                 access_token = token_json.get("access_token")
                 profile_request = requests.get(
-                    "https://api.github.com/user",
+                    "http://api.github.com/user",
                     headers={
                         "Authorization": f"token {access_token}",
                         "Accept": "application/json",
@@ -169,7 +171,7 @@ def github_callback(request):
 """
 def kakao_login(request):
     client_id = os.environ.get("KAKAO_ID")
-    redirect_uri = "http://airbnb-live-dev.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
+    redirect_uri = "https://airbnb-live-dev.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
@@ -183,7 +185,7 @@ def kakao_callback(request):
     try:
         code = request.GET.get("code")
         client_id = os.environ.get("KAKAO_ID")
-        redirect_uri = "http://airbnb-live-dev.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
+        redirect_uri = "https://airbnb-live-dev.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
         token_request = requests.get(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
         )
@@ -297,5 +299,5 @@ def switch_hosting(request):
 def switch_language(request):
     lang = request.GET.get("lang", None)
     if lang is not None:
-        request.session[translation.LANGUAGE_SESSION_KEY] = lang
-    return HttpResponse(status=200)
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang  # LANGUAGE_SESSION_KEY
+    return redirect(reverse("core:home", HttpResponse(status=200)))

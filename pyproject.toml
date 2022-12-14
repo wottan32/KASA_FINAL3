@@ -20,6 +20,7 @@ pytailwindcss = "^0.1.4"
 django-embed-video = "^1.4.8"
 pillow = "^9.3.0"
 django-allauth = "^0.51.0"
+psycopg2-binary = "^2.9.5"
 
 
 [build-system]

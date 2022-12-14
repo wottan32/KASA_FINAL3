@@ -84,7 +84,7 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail(
-                _("Verify KASA2 Account"),
+                "Verify KASA2 Account",
                 strip_tags(html_message),
                 settings.EMAIL_FROM,
                 [self.email],

@@ -7,10 +7,6 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from users import mixins as user_mixins
 from . import models, forms
-from django.http import HttpResponse
-#static files import
-from django.conf import settings
-from django.conf.urls.static import static
 
 
 class HomeView(ListView):
@@ -203,7 +199,7 @@ class CreateRoomView(user_mixins.LoggedInOnlyView, FormView):
         messages.success(self.request, "Room Created")
         return redirect(reverse("rooms:detail", kwargs={"pk": room.pk}))
 
-def action_controller_name(request):
-    #Your_code_here: execute py scripts or call API or connect to DB
-    #return json
-    return HttpResponse(out, content_type="application/json")
+# def action_controller_name(request):
+#     #Your_code_here: execute py scripts or call API or connect to DB
+#     #return json
+#     return HttpResponse(out, content_type="application/json")
