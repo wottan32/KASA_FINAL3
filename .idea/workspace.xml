@@ -4,14 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f2307e1-c433-41b2-baf6-add125e9ecf0" name="Changes" comment="seventh commit">
+    <list default="true" id="0f2307e1-c433-41b2-baf6-add125e9ecf0" name="Changes" comment="new commit in new repository trial&amp;error to add shopping cart and receipt into the project">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/586821f1-d82a-4dc6-905b-9679980fc9b0.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/index.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/index_tsjPsNy.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/room_photos/Casa-Los-Vilos-Ryue-Nishizawa-Cristobal-Palma-03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/room_photos/bedroom-los_vilos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/room_photos/kitchen-los_vilos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/room_photos/kitchen2_-losvilos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/apps.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/paystack/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/tests.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/paystack/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paystack/views.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/static/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/staticfiles/app.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/paystack/customer_info.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/paystack/payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/migrations/0005_alter_user_bio_alter_user_birthdate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/KASA_FINAL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KASA_FINAL.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
