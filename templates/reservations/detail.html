@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load paystack %}
+...
+{% paystack_button amount=3000 email="j@example.com" %}
 
 {% block page_title %}
     Reservation {{reservation.check_in}}
@@ -28,7 +31,7 @@
                     <span class="mt-2 text-gray-500">{{reservation.room.host.first_name}}</span>
                 </div>
                 <div class="ml-5 flex flex-col">
-                    <span class="font-medium mb-px">Contact your Airbnb Host</span>
+                    <span class="font-medium mb-px">Contact your KASA2 Host</span>
                     <a href="{% url 'conversations:go' reservation.room.host.pk reservation.guest.pk %}" class="font-medium text-teal-500">Send a Message</a>
                 </div>
             </div>
@@ -47,6 +50,11 @@
                             <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn-link block px-5">Cancel Reservation</a>
                             {% if reservation.room.host == user  %}
                                 <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}" class="btn-link block px-3 mb-5">Confirm Reservation</a>
+                                {%if confirmation_date < reservation.check_in %}
+                                    <span class="text-red-500">You have to confirm the reservation before {{confirmation_date}}</span>
+                                    payment
+                                {% endif %}
+
                             {% endif %}
                         {% endif %}
                     {% endif %}

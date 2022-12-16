@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path, reverse_lazy
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -19,6 +19,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("sentry-debug/", trigger_error),
     path("__reload__/", include("django_browser_reload.urls")),
+    path("paystack/", include("paystack.urls", namespace="paystack")),
 ]
 
 if settings.DEBUG:

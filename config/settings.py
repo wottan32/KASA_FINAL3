@@ -26,10 +26,12 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paystack',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
     # 'allauth.socialaccount.providers.github',
+    # 'store.apps.StoreConfig',  # store app shopping cart app, also print receipt
 ]
 
 THIRD_PARTY_APPS = [
@@ -67,6 +69,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+PAYSTACK_PUBLIC_KEY = "puroshile2323" # paystack public key
+PAYSTACK_SECRET_KEY = "puroshile2323" # paystack secret key
+
 
 TEMPLATES = [
     {
@@ -203,6 +209,7 @@ MEDIA_URL = '/media/'
 
 # Email
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'mtorresl@uft.edu'

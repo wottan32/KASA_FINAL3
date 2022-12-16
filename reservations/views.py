@@ -15,6 +15,7 @@ class CreateError(Exception):
 
 @login_required
 def create(request, room, year, month, day, **kwargs):
+    global date_obj
     try:
         date_obj = datetime.datetime(year, month, day)
         room = room_models.Room.objects.get(pk=room)
@@ -28,8 +29,11 @@ def create(request, room, year, month, day, **kwargs):
             guest=request.user,
             room=room,
             check_in=date_obj,
-            check_out=date_obj + datetime.timedelta(days=1),
+            check_out=date_obj + datetime.timedelta(days=30),
+            # change days number to edit how long your reservation will last
         )
+        # models.BookedDay.objects.create(day=date_obj, reservation=reservation)
+        # messages.success(request, "Reservation Created")
         return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
 
 
@@ -64,3 +68,59 @@ def edit_reservation(request, pk, verb):
     reservation.save()
     messages.success(request, "Reservation Updated")
     return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
+
+
+def delete_reservation(request, pk):
+    reservation = models.Reservation.objects.get_or_none(pk=pk)
+    if not reservation or (
+            reservation.guest != request.user and reservation.room.host != request.user
+    ):
+        raise Http404()
+    reservation.delete()
+    messages.success(request, "Reservation Deleted")
+    return redirect(reverse("core:home"))
+
+
+# def pay_reservation(request, pk):
+#     reservation = models.Reservation.objects.get_or_none(pk=pk)
+#     if not reservation or (
+#             reservation.guest != request.user and reservation.room.host != request.user
+#     ):
+#         raise Http404()
+#     reservation.status = models.Reservation.STATUS_PAID
+#     reservation.save()
+#     messages.success(request, "Reservation Paid")
+#     return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
+#
+#
+# class pay(View):
+#     def get(self, *args, **kwargs):
+#         pk = kwargs.get("pk")
+#         reservation = models.Reservation.objects.get_or_none(pk=pk)
+#         if not reservation or (
+#                 reservation.guest != self.request.user
+#                 and reservation.room.host != self.request.user
+#         ):
+#             raise Http404()
+#         return render(
+#             self.request,
+#             "reservations/pay.html",
+#             {"reservation ": reservation},
+#         )
+#         return render(self.request, "reservations/pay.html")
+#
+#     def post(self, *args, **kwargs):
+#         pk = kwargs.get("pk")
+#         reservation = models.Reservation.objects.get_or_none(pk=pk)
+#         if not reservation or (
+#                 reservation.guest != self.request.user
+#                 and reservation.room.host != self.request.user
+#         ):
+#             raise Http404()
+#         reservation.status = models.Reservation.STATUS_PAID
+#         reservation.save()
+#         messages.success(self.request, "Reservation Paid")
+#         return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
+#
+# def customer_info(request):
+#     return None
