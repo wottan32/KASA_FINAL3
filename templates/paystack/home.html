@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Método de Pagos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
+
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+</head>
+<h2>Metodo de Pago</h2>
+{#<img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MercadoPago" width="200" height="100">#}
+<body>
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="
+        <input type="hidden" name="item_name" value="Pago de Prueba">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="amount" value="1.00">
+        <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+        <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+    </form>
+<body>
+</body>
+</html>

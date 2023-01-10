@@ -1,6 +1,6 @@
 import os
 import sentry_sdk
-# from django.conf import settings
+from django.conf import settings
 from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_8o_w#6@te08l)aewj@bk)3(m#oz63clh@fw#5!4s1%37re4b2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True   # True
 
 ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost']
 
@@ -26,7 +26,9 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'paystack',
+    'paystack.apps.PaystackConfig',
+    # paystack app
+    # 'paystack',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
@@ -43,6 +45,8 @@ THIRD_PARTY_APPS = [
     'theme',
     'tailwindcss',
     'django_browser_reload',
+    'bootstrap_daterangepicker',
+    'jquery',
 ]
 
 PROJECT_APPS = [
@@ -70,9 +74,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-PAYSTACK_PUBLIC_KEY = "puroshile2323" # paystack public key
-PAYSTACK_SECRET_KEY = "puroshile2323" # paystack secret key
-
+PAYSTACK_PUBLIC_KEY = "puroshile2323"  # paystack public key
+PAYSTACK_SECRET_KEY = "puroshile2323"  # paystack secret key
 
 TEMPLATES = [
     {
@@ -86,6 +89,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',  # new
+                'django.template.context_processors.media',  # new
+                'django.template.context_processors.static',  # new
+                'django.template.context_processors.csrf',  # new
+                # 'app.paystack.context_processors.paystack', # paystack context processor
+                # 'app.context_processors.paystack', # paystack context processor
                 # 'allauth.account.context_processors.account',  # new
                 # 'allauth.socialaccount.context_processors.socialaccount',  # new
             ],
@@ -195,17 +203,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# AUTH_USER_MODEL = "users.User"
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# Media
-# DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
 
 MEDIA_URL = '/media/'
-
-# Auth
-
-# LOGIN_URL = "/users/login/"
 
 # Email
 

@@ -21,6 +21,11 @@ django-embed-video = "^1.4.8"
 pillow = "^9.3.0"
 django-allauth = "^0.51.0"
 psycopg2-binary = "^2.9.5"
+django-jquery = "^3.1.0"
+setuptools = "^65.6.3"
+django-jquery-widgets = "^0.1.2"
+django4-bootstrap-daterangepicker = "^1.0.7"
+django-bootstrap-daterangepicker = "^1.0.6"
 
 
 [build-system]
