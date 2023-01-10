@@ -168,18 +168,41 @@ class Room(core_models.TimeStampedModel):
     # next_month_cal = Calendar(this_year, next_month)
     # return [this_month_cal, next_month_cal]
 
-    def get_calendars(self):
-        now = timezone.now()
-        this_year = now.year
-        this_month = now.month
-        next_month = this_month + 1
-        if this_month == 12 and next_month == 13:
-            this_month_cal = Calendar(this_year, this_month)
-            next_month_cal = Calendar(this_year + 1, 1)
-        else:
-            this_month_cal = Calendar(this_year, this_month)
-            next_month_cal = Calendar(this_year, next_month)
-        return [this_month_cal, next_month_cal]
+    # class Room(models.Model):
+    #     # other fields and methods
+
+        def get_calendar_data(self):
+            start = moment().subtract(29, 'days')
+            end = moment()
+            ranges = {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'),
+                               moment().subtract(1, 'month').endOf('month')]
+            }
+            return {
+                'start': start,
+                'end': end,
+                'ranges': ranges,
+            }
+
+    """LATEST TO BE HIDE"""
+    #
+    # def get_calendars(self):
+    #     now = timezone.now()
+    #     this_year = now.year
+    #     this_month = now.month
+    #     next_month = this_month + 1
+    #     if this_month == 12 and next_month == 13:
+    #         this_month_cal = Calendar(this_year, this_month)
+    #         next_month_cal = Calendar(this_year + 1, 1)
+    #     else:
+    #         this_month_cal = Calendar(this_year, this_month)
+    #         next_month_cal = Calendar(this_year, next_month)
+    #     return [this_month_cal, next_month_cal]
 
 # class Video(models.Model):
 #     """Video Model Definition """

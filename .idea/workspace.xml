@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f2307e1-c433-41b2-baf6-add125e9ecf0" name="Changes" comment="2nd commit in new repository trial&amp;error to add shopping cart and receipt into the project">
-      <change afterPath="$PROJECT_DIR$/media/paystack/cart.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paystack/templatetags/paystack_custom_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/render.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/paystack/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paystack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/paystack/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paystack/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/paystack/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paystack/customer_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paystack/customer_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservations/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservations/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rooms/room_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rooms/room_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rooms/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +116,7 @@
       <workItem from="1671489710674" duration="1133000" />
       <workItem from="1671640232901" duration="53000" />
       <workItem from="1671640312925" duration="148000" />
-      <workItem from="1673299880832" duration="9021000" />
+      <workItem from="1673299880832" duration="10264000" />
     </task>
     <task id="LOCAL-00001" summary="sixth commit">
       <created>1670981839163</created>
@@ -161,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671149886138</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2nd commit in new repository trial&amp;error to add shopping cart and receipt into the project">
+      <created>1673309053013</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673309053013</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
