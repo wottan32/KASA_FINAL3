@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     'django_browser_reload',
     'bootstrap_daterangepicker',
     'jquery',
+    'social_django',
 ]
 
 PROJECT_APPS = [
@@ -71,6 +72,27 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = 'df6a5412a07f33314d1d'
+SOCIAL_AUTH_GITHUB_SECRET = '574012c80fc95a3f23b5ebaf442e82aa5c896995'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'myapp.pipeline.load_user',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
+
+# LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'config.urls'
 

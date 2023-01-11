@@ -755,6 +755,33 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-social-auth"
+version = "0.3.6"
+description = "Python social authentication made simple."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-social-auth-0.3.6.tar.gz", hash = "sha256:6986220df76934aee15c54938a13ebe370a1976e043af01fa3bea417f6722e74"},
+    {file = "python_social_auth-0.3.6-py2-none-any.whl", hash = "sha256:9aaad6f7bf83fd129620eadaab1e78e63200da61a5d8898fd1aa243686b36575"},
+    {file = "python_social_auth-0.3.6-py3-none-any.whl", hash = "sha256:8aac8531f7dd4d1b9af606654532fef4f615cb437774a7a1f8dcdebe89c17664"},
+]
+
+[package.dependencies]
+social-auth-core = "*"
+
+[package.extras]
+cherrypy = ["social-auth-app-cherrypy"]
+django = ["social-auth-app-django"]
+django-mongoengine = ["social-auth-app-django-mongoengine"]
+flask = ["social-auth-app-flask", "social-auth-app-flask-sqlalchemy"]
+flask-mongoengine = ["social-auth-app-flask-mongoengine"]
+flask-peewee = ["social-auth-app-flask-peewee"]
+pyramid = ["social-auth-app-pyramid"]
+tornado = ["social-auth-app-tornado"]
+webpy = ["social-auth-app-webpy"]
+
+[[package]]
 name = "python3-openid"
 version = "3.2.0"
 description = "OpenID support for modern servers and consumers."
@@ -928,6 +955,34 @@ files = [
 ]
 
 [[package]]
+name = "social-auth-core"
+version = "4.3.0"
+description = "Python social authentication made simple."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "social-auth-core-4.3.0.tar.gz", hash = "sha256:4686f0e43cf12954216875a32e944847bb1dc69e7cd9573d16a9003bb05ca477"},
+    {file = "social_auth_core-4.3.0-py3-none-any.whl", hash = "sha256:1e3440d104f743b02dfe258c9d4dba5b4065abf24b2f7eb362b47054d21797df"},
+]
+
+[package.dependencies]
+cryptography = ">=1.4"
+defusedxml = ">=0.5.0rc1"
+oauthlib = ">=1.0.3"
+PyJWT = ">=2.0.0"
+python3-openid = ">=3.0.10"
+requests = ">=2.9.1"
+requests-oauthlib = ">=0.6.1"
+
+[package.extras]
+all = ["cryptography (>=2.1.1)", "lxml (<4.7)", "python-jose (>=3.0.0)", "python3-saml (>=1.2.1)"]
+allpy3 = ["cryptography (>=2.1.1)", "lxml (<4.7)", "python-jose (>=3.0.0)", "python3-saml (>=1.2.1)"]
+azuread = ["cryptography (>=2.1.1)"]
+openidconnect = ["python-jose (>=3.0.0)"]
+saml = ["lxml (<4.7)", "python3-saml (>=1.2.1)"]
+
+[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
@@ -1010,4 +1065,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "629b700249dfb9de525b8167909b23a6dbec5cf07032f7f6c856171d098f75e2"
+content-hash = "ed53e253a3f9a0325e73a797266262235b55c825f226d3a8594faad559980400"

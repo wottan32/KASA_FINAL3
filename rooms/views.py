@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from users import mixins as user_mixins
 from . import models, forms
+# from models import Room, RoomType, Amenity, Facility, HouseRule, Photo
 
 
 class HomeView(ListView):

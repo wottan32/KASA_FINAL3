@@ -1,0 +1,2 @@
+class GithubException(Exception):
+    pass

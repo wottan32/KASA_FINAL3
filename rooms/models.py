@@ -79,9 +79,15 @@ class Room(core_models.TimeStampedModel):
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
+    host = models.ForeignKey("users.User", related_name="rooms", on_delete=models.CASCADE)
+    start_date = models.DateField(default=timezone.now)
+    end_date = models.DateField(default=timezone.now)
+    start_time = models.TimeField(default=timezone.now)
+    end_time = models.TimeField(default=timezone.now)
+
 
     def __str__(self):
-        return self.name
+        return self.host.username + ' - ' + self.start_date + ' - ' + self.end_date + ' - ' + self.start_time + ' - ' + self.end_time
 
     def save(self, *args, **kwargs):
         self.city = str.capitalize(self.city)
@@ -171,23 +177,23 @@ class Room(core_models.TimeStampedModel):
     # class Room(models.Model):
     #     # other fields and methods
 
-        def get_calendar_data(self):
-            start = moment().subtract(29, 'days')
-            end = moment()
-            ranges = {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'),
-                               moment().subtract(1, 'month').endOf('month')]
-            }
-            return {
-                'start': start,
-                'end': end,
-                'ranges': ranges,
-            }
+        # def get_calendar_data(self):
+        #     start = moment().subtract(29, 'days')
+        #     end = moment()
+        #     ranges = {
+        #         'Today': [moment(), moment()],
+        #         'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        #         'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        #         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        #         'This Month': [moment().startOf('month'), moment().endOf('month')],
+        #         'Last Month': [moment().subtract(1, 'month').startOf('month'),
+        #                        moment().subtract(1, 'month').endOf('month')]
+        #     }
+        #     return {
+        #         'start': start,
+        #         'end': end,
+        #         'ranges': ranges,
+        #     }
 
     """LATEST TO BE HIDE"""
     #

@@ -26,6 +26,7 @@ setuptools = "^65.6.3"
 django-jquery-widgets = "^0.1.2"
 django4-bootstrap-daterangepicker = "^1.0.7"
 django-bootstrap-daterangepicker = "^1.0.6"
+python-social-auth = "^0.3.6"
 
 
 [build-system]
