@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f2307e1-c433-41b2-baf6-add125e9ecf0" name="Changes" comment="2nd commit in new repository trial&amp;error to add shopping cart and receipt into the project">
-      <change afterPath="$PROJECT_DIR$/users/2views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/utils.py" afterDir="false" />
+    <list default="true" id="0f2307e1-c433-41b2-baf6-add125e9ecf0" name="Changes" comment="fixed github login with python-social-auth 0.3.6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +116,7 @@
       <workItem from="1671640232901" duration="53000" />
       <workItem from="1671640312925" duration="148000" />
       <workItem from="1673299880832" duration="10264000" />
-      <workItem from="1673361352751" duration="24196000" />
+      <workItem from="1673361352751" duration="25002000" />
     </task>
     <task id="LOCAL-00001" summary="sixth commit">
       <created>1670981839163</created>
@@ -167,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673309053013</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed github login with python-social-auth 0.3.6">
+      <created>1673479851614</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673479851614</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +171,8 @@
     <MESSAGE value="seventh commit" />
     <MESSAGE value="new commit in new repository trial&amp;error to add shopping cart and receipt into the project" />
     <MESSAGE value="2nd commit in new repository trial&amp;error to add shopping cart and receipt into the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="2nd commit in new repository trial&amp;error to add shopping cart and receipt into the project" />
+    <MESSAGE value="fixed github login with python-social-auth 0.3.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed github login with python-social-auth 0.3.6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
